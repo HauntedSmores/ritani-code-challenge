@@ -16,9 +16,14 @@ function User({ user, fetchFollowers, loading }) {
           </div>
         ))}
       </div>
-      <button onClick={() => fetchFollowers(user.login)} disabled={loading}>
-        {loading ? 'Loading...' : 'Load More'}
-      </button>
+      { user.followers.length < user.followers_count && (
+        <button
+          onClick={() => fetchFollowers(user.login)}
+          disabled={loading}
+        >
+          {loading ? 'Loading...' : 'Load More'}
+        </button>
+      )}
     </div>
   )
 }
